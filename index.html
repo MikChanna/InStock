@@ -3,7 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ski Resort Weather</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
+
+    <title>Stock Prices and Alerts</title>
   </head>
-  <body></body>
+  <body>
+    <head>
+      <div class="jumbotron">
+        <h1 class="display-4 text-center">Stock Prices and Alerts</h1>
+      </div>
+    </head>
+
+    <div class="container">
+      <div class="row">
+        <!-- Search Parameters Panel -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Search Parameters
+            </h3>
+          </div>
+          <div class="panel-body">
+            <form>
+              <div class="form-group">
+                <label for="search">Ticker Symbol:</label>
+                <input type="text" class="form-control" id="search" />
+              </div>
+              <!-- <div class="form-group">
+                <label for="selection">Number of Records:</label>
+                <select class="form-control" id="selection">
+                  <option value="1">1</option>
+                  <option value="5" selected>5</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="start-year">Start Year:</label>
+                <input type="text" class="form-control" id="start-year" />
+              </div>
+              <div class="form-group">
+                <label for="end-year">End Year:</label>
+                <input type="text" class="form-control" id="end-year" />
+              </div> -->
+              <button type="button" class="btn btn-primary" id="searchBtn">
+                Search
+              </button>
+              <button type="button" class="btn btn-primary">Clear</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="container">
+      <div class="row">
+        <!-- Results Panel -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Search Results
+            </h3>
+            <div id="results-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
