@@ -9,7 +9,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <!-- <link rel="stylesheet" href="./assets/style.css" /> -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
     <title>Stock Prices and Alerts</title>
   </head>
@@ -35,34 +35,59 @@
             <form>
               <div class="form-group">
                 <label for="search">Ticker Symbol:</label>
+                <!-- Input field -->
                 <input type="text" class="form-control" id="search" />
               </div>
-              <!-- <div class="form-group">
-                <label for="selection">Number of Records:</label>
-                <select class="form-control" id="selection">
-                  <option value="1">1</option>
-                  <option value="5" selected>5</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="start-year">Start Year:</label>
-                <input type="text" class="form-control" id="start-year" />
-              </div>
-              <div class="form-group">
-                <label for="end-year">End Year:</label>
-                <input type="text" class="form-control" id="end-year" />
-              </div> -->
-              <button type="button" class="btn btn-primary" id="searchBtn">
+              <!-- Search button -->
+              <button type="button" class="btn btn-dark" id="searchBtn">
                 Search
               </button>
-              <button type="button" class="btn btn-primary">Clear</button>
+              <button type="button" class="btn btn-dark">Clear</button>
             </form>
           </div>
         </div>
       </div>
     </div>
     <hr />
+
+    <!-- Indices container -->
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Indices
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="indices-div">
+      <!-- Indices content -->
+    </div>
+
+    <hr />
+
+    <!-- Cryptocurrency container -->
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              Cryptocurrencies
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cryptos-div">
+      <!-- Cryptocurrency content -->
+    </div>
+
+    <hr />
+
     <div class="container">
       <div class="row">
         <!-- Results Panel -->
@@ -71,11 +96,14 @@
             <h3 class="panel-title">
               Search Results
             </h3>
-            <div id="results-list"></div>
           </div>
         </div>
       </div>
     </div>
+    <div id="results-list">
+      <!-- Search result content -->
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
