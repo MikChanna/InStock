@@ -13,15 +13,36 @@
 
     <title>Stock Prices and Alerts</title>
   </head>
-  <body>
-    <head>
-      <div class="bg-dark pt-2 pb-2">
-        <h1 class="display-4 text-center text-white">
-          Stock Prices and Alerts
-        </h1>
-      </div>
-    </head>
 
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+      <a class="navbar-brand text-white" href="#">inStock</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="#"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="#">Link</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <br />
     <div class="container">
       <div class="row">
         <!-- Search Parameters Panel -->
@@ -36,7 +57,14 @@
               <div class="form-group">
                 <label for="search">Ticker Symbol:</label>
                 <!-- Input field -->
-                <input type="text" class="form-control" id="search" />
+                <div class="md-form active-cyan active-cyan-2 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="search"
+                    aria-label="search"
+                  />
+                </div>
               </div>
               <!-- Search button -->
               <button type="button" class="btn btn-dark" id="searchBtn">
@@ -62,11 +90,7 @@
         </div>
       </div>
     </div>
-
-    <div id="indices-div">
-      <!-- Indices content -->
-    </div>
-
+    <div class="mt-4 col-md-12" id="indices-div"></div>
     <hr />
 
     <!-- Cryptocurrency container -->
@@ -82,7 +106,7 @@
       </div>
     </div>
 
-    <div id="cryptos-div">
+    <div class="mt-4 col-md-12" id="cryptos-div">
       <!-- Cryptocurrency content -->
     </div>
 
@@ -100,7 +124,7 @@
         </div>
       </div>
     </div>
-    <div id="results-list">
+    <div id="results-list" class="row">
       <!-- Search result content -->
     </div>
 

@@ -1,0 +1,23 @@
+body {
+  background-color: white;
+}
+
+.card {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  max-width: 350px;
+  min-width: 75px;
+}
+
+.card-img {
+  display: block;
+  margin: auto;
+  width: 25%;
+  padding-bottom: 5px;
+}
+
+.card-title {
+  font-size: xx-large;
+}
