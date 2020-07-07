@@ -30,16 +30,12 @@ function searchTicker(searchTerm) {
     method: "GET",
     success: function (data) {
       console.log(data);
-      var resultsBody = $("<div>").addClass("card-body");
-      var resultsDiv = $("#results-list").addClass(
-        "card col-md-2 ml-3 bg-dark text-white fixed-right"
-      );
+      var resultsBody = $("<div>").addClass("card");
+      var resultsDiv = $("#results-list").addClass("card-content");
       var tickerText = searchTerm.toUpperCase();
-      var tickerString = $("<p>")
-        .addClass("card-title text-center")
-        .text(tickerText);
+      var tickerString = $("<p>").addClass("title").text(tickerText);
       var openPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Open Price: $" +
             parseFloat(
@@ -47,7 +43,7 @@ function searchTicker(searchTerm) {
             ).toFixed(2)
         );
       var closingPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Closing Price: $" +
             parseFloat(
@@ -55,7 +51,7 @@ function searchTicker(searchTerm) {
             ).toFixed(2)
         );
       var volumeString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Volume: " +
             numberWithCommas(
@@ -100,17 +96,13 @@ function GetStockPrice(symbol, imgUrl) {
       console.log(data5min);
 
       var indicesDiv = $("#indices-div");
-      var indicesCard = $("<div>").addClass(
-        "card col-2 col-sm-2 col-md-2 col-lg-2 ml-2 bg-dark text-white"
-      );
-      var indicesBody = $("<div>").addClass("card-body");
-      var companyImg = $("<img>").attr("src", imgUrl).addClass("card-img");
+      var indicesCard = $("<div>").addClass("card");
+      var indicesBody = $("<div>").addClass("card-content");
+      var companyImg = $("<img>").attr("src", imgUrl).addClass("media");
       var tickerText = symbol.toUpperCase();
-      var tickerString = $("<p>")
-        .addClass("card-title text-center")
-        .text(tickerText);
+      var tickerString = $("<p>").addClass("title").text(tickerText);
       var openPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Open Price: $" +
             parseFloat(
@@ -118,7 +110,7 @@ function GetStockPrice(symbol, imgUrl) {
             ).toFixed(2)
         );
       var closingPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Closing Price: $" +
             parseFloat(
@@ -126,7 +118,7 @@ function GetStockPrice(symbol, imgUrl) {
             ).toFixed(2)
         );
       var volumeString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Volume: " +
             numberWithCommas(
@@ -164,17 +156,13 @@ function GetCryptoPrice(symbol, imgUrl) {
     success: function (data) {
       console.log(data);
       var cryptosDiv = $("#cryptos-div");
-      var cryptosCard = $("<div>").addClass(
-        "card col-2 col-sm-2 col-md-2 col-lg-2 ml-2 bg-dark text-white"
-      );
-      var cryptosBody = $("<div>").addClass("card-body");
-      var bitcoinImg = $("<img>").attr("src", imgUrl).addClass("card-img");
+      var cryptosCard = $("<div>").addClass("card");
+      var cryptosBody = $("<div>").addClass("card-content");
+      var bitcoinImg = $("<img>").attr("src", imgUrl).addClass("media");
       var tickerText = symbol.toUpperCase();
-      var tickerString = $("<p>")
-        .addClass("card-title text-center")
-        .text(tickerText);
+      var tickerString = $("<p>").addClass("title").text(tickerText);
       var openPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Open Price: $" +
             parseFloat(
@@ -184,7 +172,7 @@ function GetCryptoPrice(symbol, imgUrl) {
             ).toFixed(2)
         );
       var closingPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Closing Price: $" +
             parseFloat(
@@ -195,7 +183,7 @@ function GetCryptoPrice(symbol, imgUrl) {
         );
 
       var volumeString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Volume: " +
             numberWithCommas(

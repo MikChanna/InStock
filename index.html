@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
 
@@ -15,119 +13,92 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-      <a class="navbar-brand text-white" href="#">inStock</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link text-white" href="#"
-              >Home <span class="sr-only">(current)</span></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="#">Link</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <br />
-    <div class="container">
-      <div class="row">
-        <!-- Search Parameters Panel -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Search Parameters
-            </h3>
-          </div>
-          <div class="panel-body">
-            <form>
-              <div class="form-group">
-                <label for="search">Ticker Symbol:</label>
-                <!-- Input field -->
-                <div class="md-form active-cyan active-cyan-2 mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="search"
-                    aria-label="search"
-                  />
-                </div>
-              </div>
-              <!-- Search button -->
-              <button type="button" class="btn btn-dark" id="searchBtn">
-                Search
-              </button>
-              <button type="button" class="btn btn-dark">Clear</button>
-            </form>
-          </div>
+    <section class="hero is-small is-dark is-bold">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            InStock
+          </h1>
+          <h2 class="subtitle">
+            For your stock needs
+          </h2>
         </div>
       </div>
-    </div>
+    </section>
+    <br />
+    <section class="level">
+      <div class="level-item center">
+        <!-- Search Parameters Panel -->
+        <p class="is-size-4">Search Parameters</p>
+      </div>
+      <div class="level-item center">
+        <label for="search">Ticker Symbol:</label>
+        <!-- !-- Input field -->
+
+        <input
+          type="text"
+          class="input is-rounded"
+          id="search"
+          aria-label="search"
+        />
+      </div>
+
+      <!-- Search button -->
+      <div class="level-item center">
+        <button type="button" class="button is-dark is-rounded" id="searchBtn">
+          Search
+        </button>
+
+        <button type="button" class="button is-dark is-rounded">
+          Clear
+        </button>
+      </div>
+    </section>
     <hr />
 
     <!-- Indices container -->
-    <div class="container">
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Indices
-            </h3>
-          </div>
-        </div>
+    <section class="section">
+      <div class="notification">
+        <p class="is-size-4">
+          Indices
+        </p>
       </div>
-    </div>
-    <div class="mt-4 col-md-12" id="indices-div"></div>
+    </section>
+    <div class="center" id="indices-div"></div>
     <hr />
 
     <!-- Cryptocurrency container -->
-    <div class="container">
-      <div class="row">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Cryptocurrencies
-            </h3>
-          </div>
-        </div>
+    <section class="section">
+      <div class="notification">
+        <p class="is-size-4">
+          Cryptocurrencies
+        </p>
       </div>
-    </div>
+    </section>
 
-    <div class="mt-4 col-md-12" id="cryptos-div">
+    <div class="center" id="cryptos-div">
       <!-- Cryptocurrency content -->
     </div>
 
     <hr />
 
-    <div class="container">
-      <div class="row">
-        <!-- Results Panel -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
-              Search Results
-            </h3>
-          </div>
-        </div>
+    <section class="section">
+      <div class="notification">
+        <p class="is-size-4">
+          Search Results
+        </p>
       </div>
-    </div>
+    </section>
+
     <div id="results-list" class="row">
       <!-- Search result content -->
     </div>
 
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p><strong>InStock</strong> by Dolan, Chase, & Channa</p>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
