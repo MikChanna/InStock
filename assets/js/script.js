@@ -1,7 +1,7 @@
 function searchTicker(searchTerm) {
   console.log("in search");
 
-  const apiKey = "362XYH6WP6R5F90Q";
+  const apiKey = "6BRCLD9N4HU06JWN";
 
   const cryptoQueryURL =
     "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&market=USD&apikey=" +
@@ -41,34 +41,36 @@ function searchTicker(searchTerm) {
       var openPriceString = $("<p>")
         .addClass("card-text text-center")
         .text(
-          "Open Price: " + data["Time Series (Daily)"]["2020-03-09"]["1. open"]
+          "Open Price: $" +
+            parseFloat(
+              data["Time Series (Daily)"]["2020-03-09"]["1. open"]
+            ).toFixed(2)
         );
       var closingPriceString = $("<p>")
         .addClass("card-text text-center")
-        .text("Closing Price: ");
-      var closingPriceP = $("<p>")
-        .addClass("card-text text-center")
-        .text(data["Time Series (Daily)"]["2020-03-09"]["4. close"]);
+        .text(
+          "Closing Price: $" +
+            parseFloat(
+              data["Time Series (Daily)"]["2020-03-09"]["4. close"]
+            ).toFixed(2)
+        );
       var volumeString = $("<p>")
         .addClass("card-text text-center")
-        .text("Volume: ");
-      var volumeP = $("<p>")
-        .addClass("card-text text-center")
-        .text(data["Time Series (Daily)"]["2020-03-09"]["5. volume"]);
+        .text(
+          "Volume: " +
+            numberWithCommas(
+              data["Time Series (Daily)"]["2020-03-09"]["5. volume"]
+            )
+        );
 
       resultsBody.prepend(
         tickerString,
         openPriceString,
-        openPriceP,
         closingPriceString,
-        closingPriceP,
-        volumeString,
-        volumeP
+        volumeString
       );
 
       resultsDiv.append(resultsBody);
-
-      console.log(data["Time Series (Daily)"]["2020-03-09"]["1. open"]);
     },
     error: function (jqXHR, textStatus, error) {
       console.log(error);
@@ -84,7 +86,7 @@ $("#searchBtn").on("click", function () {
 });
 
 function GetStockPrice(symbol, imgUrl) {
-  const apiKey = "362XYH6WP6R5F90Q";
+  const apiKey = "6BRCLD9N4HU06JWN";
   const fiveMinQueryURL =
     "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" +
     symbol +
@@ -102,7 +104,7 @@ function GetStockPrice(symbol, imgUrl) {
         "card col-2 col-sm-2 col-md-2 col-lg-2 ml-2 bg-dark text-white"
       );
       var indicesBody = $("<div>").addClass("card-body");
-      var nasdaqImg = $("<img>").attr("src", imgUrl).addClass("card-img");
+      var companyImg = $("<img>").attr("src", imgUrl).addClass("card-img");
       var tickerText = symbol.toUpperCase();
       var tickerString = $("<p>")
         .addClass("card-title text-center")
@@ -133,7 +135,7 @@ function GetStockPrice(symbol, imgUrl) {
         );
 
       indicesBody.prepend(
-        nasdaqImg,
+        companyImg,
         tickerString,
         openPriceString,
         closingPriceString,
@@ -146,7 +148,7 @@ function GetStockPrice(symbol, imgUrl) {
 }
 
 function GetCryptoPrice(symbol, imgUrl) {
-  const apiKey = "362XYH6WP6R5F90Q";
+  const apiKey = "6BRCLD9N4HU06JWN";
   const targetMarket = "USD";
   const cryptoQueryURL =
     "https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=" +
@@ -174,7 +176,7 @@ function GetCryptoPrice(symbol, imgUrl) {
       var openPriceString = $("<p>")
         .addClass("card-text text-center")
         .text(
-          "Open Price: " +
+          "Open Price: $" +
             parseFloat(
               data["Time Series (Digital Currency Daily)"]["2020-07-01"][
                 "1a. open (USD)"
@@ -184,7 +186,7 @@ function GetCryptoPrice(symbol, imgUrl) {
       var closingPriceString = $("<p>")
         .addClass("card-text text-center")
         .text(
-          "Closing Price: " +
+          "Closing Price: $" +
             parseFloat(
               data["Time Series (Digital Currency Daily)"]["2020-07-01"][
                 "4a. close (USD)"
