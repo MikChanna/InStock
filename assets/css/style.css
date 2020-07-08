@@ -1,5 +1,6 @@
 body {
   background-color: white;
+  font-weight: bold;
 }
 
 .card {
@@ -9,15 +10,30 @@ body {
   margin-bottom: 10px;
   max-width: 350px;
   min-width: 75px;
+  background-color: #1b2631;
+  color: white;
+  margin: 10px;
+  border-radius: 5px;
 }
 
-.card-img {
+.media {
   display: block;
   margin: auto;
-  width: 25%;
   padding-bottom: 5px;
 }
 
-.card-title {
+.title {
   font-size: xx-large;
+  color: white;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 150px;
+  margin: 5px;
 }

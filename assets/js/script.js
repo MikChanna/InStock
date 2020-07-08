@@ -1,6 +1,4 @@
 function searchTicker(searchTerm) {
-  console.log("in search");
-
   const apiKey = "6BRCLD9N4HU06JWN";
 
   const cryptoQueryURL =
@@ -29,48 +27,30 @@ function searchTicker(searchTerm) {
     url: dailyQueryURL,
     method: "GET",
     success: function (data) {
-      console.log(data);
-      var resultsBody = $("<div>").addClass("card-body");
-      var resultsDiv = $("#results-list").addClass(
-        "card col-md-2 ml-3 bg-dark text-white fixed-right"
-      );
+      var latestTimeKey = Object.keys(data["Time Series (Daily)"])[0];
       var tickerText = searchTerm.toUpperCase();
-      var tickerString = $("<p>")
-        .addClass("card-title text-center")
-        .text(tickerText);
-      var openPriceString = $("<p>")
-        .addClass("card-text text-center")
-        .text(
-          "Open Price: $" +
-            parseFloat(
-              data["Time Series (Daily)"]["2020-03-09"]["1. open"]
-            ).toFixed(2)
-        );
-      var closingPriceString = $("<p>")
-        .addClass("card-text text-center")
-        .text(
-          "Closing Price: $" +
-            parseFloat(
-              data["Time Series (Daily)"]["2020-03-09"]["4. close"]
-            ).toFixed(2)
-        );
-      var volumeString = $("<p>")
-        .addClass("card-text text-center")
-        .text(
-          "Volume: " +
-            numberWithCommas(
-              data["Time Series (Daily)"]["2020-03-09"]["5. volume"]
-            )
-        );
+      $(".modal-card-title").text(tickerText);
 
-      resultsBody.prepend(
-        tickerString,
-        openPriceString,
-        closingPriceString,
-        volumeString
+      $("#results-open").text(
+        "Open Price: $" +
+          parseFloat(
+            data["Time Series (Daily)"][latestTimeKey]["1. open"]
+          ).toFixed(2)
       );
 
-      resultsDiv.append(resultsBody);
+      $("#results-close").text(
+        "Closing Price: $" +
+          parseFloat(
+            data["Time Series (Daily)"][latestTimeKey]["4. close"]
+          ).toFixed(2)
+      );
+
+      $("#results-volume").text(
+        "Volume: " +
+          numberWithCommas(
+            data["Time Series (Daily)"][latestTimeKey]["5. volume"]
+          )
+      );
     },
     error: function (jqXHR, textStatus, error) {
       console.log(error);
@@ -83,7 +63,17 @@ $("#searchBtn").on("click", function () {
   // get the value of the input from user
   ticker = $("#search").val();
   searchTicker(ticker);
+
+  ToggleResultModal();
 });
+
+function ToggleResultModal() {
+  $(".modal").toggleClass("is-active");
+}
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function GetStockPrice(symbol, imgUrl) {
   const apiKey = "6BRCLD9N4HU06JWN";
@@ -97,40 +87,36 @@ function GetStockPrice(symbol, imgUrl) {
     url: fiveMinQueryURL,
     method: "GET",
     success: function (data5min) {
-      console.log(data5min);
+      var latestTimeKey = Object.keys(data5min["Time Series (5min)"])[0];
 
       var indicesDiv = $("#indices-div");
-      var indicesCard = $("<div>").addClass(
-        "card col-2 col-sm-2 col-md-2 col-lg-2 ml-2 bg-dark text-white"
-      );
-      var indicesBody = $("<div>").addClass("card-body");
-      var companyImg = $("<img>").attr("src", imgUrl).addClass("card-img");
+      var indicesCard = $("<div>").addClass("card");
+      var indicesBody = $("<div>").addClass("card-content");
+      var companyImg = $("<img>").attr("src", imgUrl).addClass("media center");
       var tickerText = symbol.toUpperCase();
-      var tickerString = $("<p>")
-        .addClass("card-title text-center")
-        .text(tickerText);
+      var tickerString = $("<p>").addClass("title center").text(tickerText);
       var openPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Open Price: $" +
             parseFloat(
-              data5min["Time Series (5min)"]["2020-07-02 15:30:00"]["1. open"]
+              data5min["Time Series (5min)"][latestTimeKey]["1. open"]
             ).toFixed(2)
         );
       var closingPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Closing Price: $" +
             parseFloat(
-              data5min["Time Series (5min)"]["2020-07-02 15:30:00"]["4. close"]
+              data5min["Time Series (5min)"][latestTimeKey]["4. close"]
             ).toFixed(2)
         );
       var volumeString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Volume: " +
             numberWithCommas(
-              data5min["Time Series (5min)"]["2020-07-02 15:30:00"]["5. volume"]
+              data5min["Time Series (5min)"][latestTimeKey]["5. volume"]
             )
         );
 
@@ -162,47 +148,45 @@ function GetCryptoPrice(symbol, imgUrl) {
     url: cryptoQueryURL,
     method: "GET",
     success: function (data) {
-      console.log(data);
+      var latestTimeKeyCrypto = Object.keys(
+        data["Time Series (Digital Currency Daily)"]
+      )[0];
       var cryptosDiv = $("#cryptos-div");
-      var cryptosCard = $("<div>").addClass(
-        "card col-2 col-sm-2 col-md-2 col-lg-2 ml-2 bg-dark text-white"
-      );
-      var cryptosBody = $("<div>").addClass("card-body");
-      var bitcoinImg = $("<img>").attr("src", imgUrl).addClass("card-img");
+      var cryptosCard = $("<div>").addClass("card");
+      var cryptosBody = $("<div>").addClass("card-content");
+      var bitcoinImg = $("<img>").attr("src", imgUrl).addClass("media center");
       var tickerText = symbol.toUpperCase();
-      var tickerString = $("<p>")
-        .addClass("card-title text-center")
-        .text(tickerText);
+      var tickerString = $("<p>").addClass("title center").text(tickerText);
       var openPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Open Price: $" +
             parseFloat(
-              data["Time Series (Digital Currency Daily)"]["2020-07-01"][
+              data["Time Series (Digital Currency Daily)"][latestTimeKeyCrypto][
                 "1a. open (USD)"
               ]
             ).toFixed(2)
         );
       var closingPriceString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Closing Price: $" +
             parseFloat(
-              data["Time Series (Digital Currency Daily)"]["2020-07-01"][
+              data["Time Series (Digital Currency Daily)"][latestTimeKeyCrypto][
                 "4a. close (USD)"
               ]
             ).toFixed(2)
         );
 
       var volumeString = $("<p>")
-        .addClass("card-text text-center")
+        .addClass("content")
         .text(
           "Volume: " +
             numberWithCommas(
               parseFloat(
-                data["Time Series (Digital Currency Daily)"]["2020-07-01"][
-                  "5. volume"
-                ]
+                data["Time Series (Digital Currency Daily)"][
+                  latestTimeKeyCrypto
+                ]["5. volume"]
               ).toFixed(0)
             )
         );
@@ -220,13 +204,24 @@ function GetCryptoPrice(symbol, imgUrl) {
   });
 }
 
-function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+function SetupCrypto() {
+  GetCryptoPrice("btc", "https://logo.clearbit.com/bitcoin.org?size=80");
+  GetCryptoPrice("eth", "https://logo.clearbit.com/ethereum.org?size=80");
+  GetCryptoPrice("ltc", "https://logo.clearbit.com/litecoinbank.org?size=80");
 }
 
-GetStockPrice("ndaq", "https://logo.clearbit.com/nasdaq.com?size=80");
-GetStockPrice("tsla", "https://logo.clearbit.com/tesla.com?size=80");
-GetStockPrice("dia", "https://logo.clearbit.com/dowjones.com?size=80");
-GetCryptoPrice("btc", "https://logo.clearbit.com/bitcoin.org?size=80");
-GetCryptoPrice("eth", "https://logo.clearbit.com/ethereum.org?size=80");
-GetCryptoPrice("ltc", "https://logo.clearbit.com/litecoinbank.org?size=80");
+function SetupIndices() {
+  GetStockPrice("ndaq", "https://logo.clearbit.com/nasdaq.com?size=80");
+  GetStockPrice("tsla", "https://logo.clearbit.com/tesla.com?size=80");
+  GetStockPrice("dia", "https://logo.clearbit.com/dowjones.com?size=80");
+}
+
+function Setup() {
+  // update prices every 5m
+  setInterval(SetupIndices(), 300000);
+
+  // set crypto price
+  SetupCrypto();
+}
+
+Setup();
