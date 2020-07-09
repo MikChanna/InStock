@@ -65,6 +65,7 @@ $("#searchBtn").on("click", function () {
   searchTicker(ticker);
 
   ToggleResultModal();
+  createChart();
 });
 
 function ToggleResultModal() {
@@ -293,3 +294,59 @@ function Setup() {
 }
 
 Setup();
+
+function createChart() {
+  var closePrices = [];
+  var sixmonths = [];
+  var ticker = $("#search").val();
+  var searchTerm = ticker.toUpperCase();
+  const apiKey = "6BRCLD9N4HU06JWN";
+  const monthlyQueryURL =
+    "https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=" +
+    searchTerm +
+    "&apikey=" +
+    apiKey;
+  console.log(ticker);
+  $.ajax({
+    url: monthlyQueryURL,
+    method: "GET",
+    success: function (monthlydata) {
+      console.log(monthlydata);
+
+      for (var i = 0; i < 6; i++) {
+        var months = Object.keys(monthlydata["Monthly Time Series"])[i];
+        console.log(months);
+        var formatMonth = moment(months).format("MMMM");
+        sixmonths.unshift(formatMonth);
+
+        var close = monthlydata["Monthly Time Series"][months]["4. close"];
+        var closeParse = parseInt(close);
+        var closeFixed = closeParse.toFixed(2);
+        closePrices.unshift(closeFixed);
+        console.log(closePrices);
+      }
+
+      var ctx = $("#myChart");
+      var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: "line",
+
+        // The data for our dataset
+        data: {
+          labels: sixmonths,
+          datasets: [
+            {
+              label: "Closing Price Trends",
+              backgroundColor: "rgb(255, 99, 132)",
+              borderColor: "rgb(255, 99, 132)",
+              data: closePrices,
+            },
+          ],
+        },
+
+        // Configuration options go here
+        options: {},
+      });
+    },
+  });
+}
