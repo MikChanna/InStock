@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #c4d0d3;
   font-weight: bold;
 }
 
@@ -10,7 +10,7 @@ body {
   margin-bottom: 10px;
   max-width: 350px;
   min-width: 75px;
-  background-color: #1b2631;
+  background-color: #424647;
   color: white;
   margin: 10px;
   border-radius: 5px;
@@ -20,6 +20,9 @@ body {
   display: block;
   margin: auto;
   padding-bottom: 5px;
+  border-radius: 5px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .title {
