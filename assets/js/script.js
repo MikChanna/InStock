@@ -133,6 +133,72 @@ function GetStockPrice(symbol, imgUrl) {
   });
 }
 
+function GetForexPrice(symbol, imgUrl) {
+  const apiKey = "6BRCLD9N4HU06JWN";
+  const targetMarket = "USD";
+  const ForexQueryURL =
+    "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=" +
+    symbol +
+    "&to_currency=" +
+    targetMarket +
+    "&apikey=" +
+    apiKey;
+
+  $.ajax({
+    url: ForexQueryURL,
+    method: "GET",
+    success: function (data) {
+      console.log(data);
+      var bidPriceKey = Object.keys(data["Realtime Currency Exchange Rate"])[7];
+      var askPriceKey = Object.keys(data["Realtime Currency Exchange Rate"])[8];
+
+      console.log(bidPriceKey);
+      console.log(askPriceKey);
+
+      var indicesDiv = $("#indices-div");
+      var indicesCard = $("<div>").addClass("card");
+      var indicesBody = $("<div>").addClass("card-content");
+      var companyImg = $("<img>").attr("src", imgUrl).addClass("media center");
+      var tickerText = symbol.toUpperCase() + "/USD";
+      var tickerString = $("<p>").addClass("title center").text(tickerText);
+      var openPriceString = $("<p>")
+        .addClass("content")
+        .text(
+          "Bidding Price: $" +
+            parseFloat(
+              data["Realtime Currency Exchange Rate"]["8. Bid Price"]
+            ).toFixed(4)
+        );
+      var closingPriceString = $("<p>")
+        .addClass("content")
+        .text(
+          "Asking Price: $" +
+            parseFloat(
+              data["Realtime Currency Exchange Rate"]["9. Ask Price"]
+            ).toFixed(4)
+        );
+      var volumeString = $("<p>")
+        .addClass("content")
+        .text(
+          "Exchange Rate: $" +
+            parseFloat(
+              data["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
+            ).toFixed(4)
+        );
+
+      indicesBody.prepend(
+        companyImg,
+        tickerString,
+        openPriceString,
+        closingPriceString,
+        volumeString
+      );
+      indicesCard.append(indicesBody);
+      indicesDiv.append(indicesCard);
+    },
+  });
+}
+
 function GetCryptoPrice(symbol, imgUrl) {
   const apiKey = "6BRCLD9N4HU06JWN";
   const targetMarket = "USD";
@@ -208,12 +274,14 @@ function SetupCrypto() {
   GetCryptoPrice("btc", "https://logo.clearbit.com/bitcoin.org?size=80");
   GetCryptoPrice("eth", "https://logo.clearbit.com/ethereum.org?size=80");
   GetCryptoPrice("ltc", "https://logo.clearbit.com/litecoinbank.org?size=80");
+  GetCryptoPrice("xrp", "https://logo.clearbit.com/xrp.io?size=80");
 }
 
 function SetupIndices() {
   GetStockPrice("ndaq", "https://logo.clearbit.com/nasdaq.com?size=80");
-  GetStockPrice("tsla", "https://logo.clearbit.com/tesla.com?size=80");
   GetStockPrice("dia", "https://logo.clearbit.com/dowjones.com?size=80");
+  GetStockPrice("spy", "https://logo.clearbit.com/spycoupon.in?size=80");
+  GetForexPrice("eur", "https://logo.clearbit.com/eurusd.it?size=80");
 }
 
 function Setup() {
