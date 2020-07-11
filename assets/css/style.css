@@ -46,10 +46,10 @@ button {
 }
 
 .notification {
-  background-color: gray;
+  background-color: #245687;
 }
 
-.is-size-4 {
+.is-size-3 {
   color: white;
   text-align: center;
 }
@@ -103,4 +103,16 @@ button {
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   background-image: none;
+}
+
+.modal-card-head,
+.modal-card-foot {
+  background-color: #245687;
+}
+
+.modal-card-title {
+  color: white;
+}
+#search-result-card {
+  background-color: #c4d0d3;
 }
