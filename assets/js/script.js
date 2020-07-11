@@ -59,6 +59,10 @@ function searchTicker(searchTerm) {
   return false;
 }
 
+function clearInput() {
+  $("#search").val("");
+}
+
 $("#searchBtn").on("click", function () {
   // get the value of the input from user
   ticker = $("#search").val();
@@ -149,12 +153,8 @@ function GetForexPrice(symbol, imgUrl) {
     url: ForexQueryURL,
     method: "GET",
     success: function (data) {
-      console.log(data);
       var bidPriceKey = Object.keys(data["Realtime Currency Exchange Rate"])[7];
       var askPriceKey = Object.keys(data["Realtime Currency Exchange Rate"])[8];
-
-      console.log(bidPriceKey);
-      console.log(askPriceKey);
 
       var indicesDiv = $("#indices-div");
       var indicesCard = $("<div>").addClass("card");
@@ -306,16 +306,12 @@ function createChart() {
     searchTerm +
     "&apikey=" +
     apiKey;
-  console.log(ticker);
   $.ajax({
     url: monthlyQueryURL,
     method: "GET",
     success: function (monthlydata) {
-      console.log(monthlydata);
-
       for (var i = 0; i < 6; i++) {
         var months = Object.keys(monthlydata["Monthly Time Series"])[i];
-        console.log(months);
         var formatMonth = moment(months).format("MMMM");
         sixmonths.unshift(formatMonth);
 
@@ -323,7 +319,6 @@ function createChart() {
         var closeParse = parseInt(close);
         var closeFixed = closeParse.toFixed(2);
         closePrices.unshift(closeFixed);
-        console.log(closePrices);
       }
 
       var ctx = $("#myChart");
