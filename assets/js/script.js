@@ -95,6 +95,7 @@ function GetStockPrice(symbol, imgUrl) {
       var latestTimeKey = Object.keys(data5min["Time Series (5min)"])[0];
 
       var indicesDiv = $("#indices-div");
+      var indicesCol = $("<div>").addClass("column center");
       var indicesCard = $("<div>").addClass("card");
       var indicesBody = $("<div>").addClass("card-content");
       var companyImg = $("<img>").attr("src", imgUrl).addClass("media center");
@@ -133,7 +134,8 @@ function GetStockPrice(symbol, imgUrl) {
         volumeString
       );
       indicesCard.append(indicesBody);
-      indicesDiv.append(indicesCard);
+      indicesCol.append(indicesCard);
+      indicesDiv.append(indicesCol);
     },
   });
 }
@@ -157,6 +159,7 @@ function GetForexPrice(symbol, imgUrl) {
       var askPriceKey = Object.keys(data["Realtime Currency Exchange Rate"])[8];
 
       var indicesDiv = $("#indices-div");
+      var indicesCol = $("<div>").addClass("column center");
       var indicesCard = $("<div>").addClass("card");
       var indicesBody = $("<div>").addClass("card-content");
       var companyImg = $("<img>").attr("src", imgUrl).addClass("media center");
@@ -195,7 +198,8 @@ function GetForexPrice(symbol, imgUrl) {
         volumeString
       );
       indicesCard.append(indicesBody);
-      indicesDiv.append(indicesCard);
+      indicesCol.append(indicesCard);
+      indicesDiv.append(indicesCol);
     },
   });
 }
@@ -219,6 +223,7 @@ function GetCryptoPrice(symbol, imgUrl) {
         data["Time Series (Digital Currency Daily)"]
       )[0];
       var cryptosDiv = $("#cryptos-div");
+      var cryptosCol = $("<div>").addClass("column center");
       var cryptosCard = $("<div>").addClass("card");
       var cryptosBody = $("<div>").addClass("card-content");
       var bitcoinImg = $("<img>").attr("src", imgUrl).addClass("media center");
@@ -266,7 +271,8 @@ function GetCryptoPrice(symbol, imgUrl) {
         volumeString
       );
       cryptosCard.append(cryptosBody);
-      cryptosDiv.append(cryptosCard);
+      cryptosCol.append(cryptosCard);
+      cryptosDiv.append(cryptosCol);
     },
   });
 }
