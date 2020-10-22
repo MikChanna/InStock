@@ -10,6 +10,6 @@ The application is also mobile-responsive.
 ![Screen Shot 2020-07-12 at 12 53 59 PM](https://user-images.githubusercontent.com/61893686/87353678-3fa0f480-c52b-11ea-8aab-e2cb58fd5980.png)
 
 
-https://mikchanna.github.io/Stock-Price-Alerts/
+https://mikchanna.github.io/InStock/ 
 
 Copyright 2020 Channa, Dolan, Chase
